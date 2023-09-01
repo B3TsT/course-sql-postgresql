@@ -1,4 +1,5 @@
 # PostgeSQL Exercises 
+## -> Fundamentals
 
 ## SQL Lesson 1: SELECT queries
 ```
@@ -127,6 +128,7 @@
 - SELECT * FROM "esquema"."PEDIDOS" WHERE "FECHA" BETWEEN '2020-08-02' AND '2020-08-04'
 - SELECT * FROM "esquema"."PEDIDOS" WHERE "FECHA" NOT BETWEEN '2020-08-02' AND '2020-08-04'
 ```
+
 ## SQL Lesson 8: IN queries
 ```
 - SELECT * FROM "esquema"."PRODUCTOS" WHERE "PRODUCTO" IN ('ORDENADOR', 'IMPRESORA', 'TECLADO')
@@ -138,4 +140,21 @@
 ```
 - SELECT * FROM "esquema"."PERSONAS" WHERE "NOMBRE" LIKE 'A%'
 - SELECT * FROM "esquema"."PERSONAS" WHERE "NOMBRE" ILIKE '_NT%'
+```
+
+## -> Data grouping
+
+## SQL Lesson 10: GROUP BY
+```
+- SELECT "PRODUCTO", SUM("IMPORTE") FROM "esquema"."PEDIDOS" GROUP BY "PRODUCTO"
+```
+
+## SQL Lesson 10: HAVING
+```
+- SELECT "PRODUCTO", SUM("IMPORTE") FROM "esquema"."PEDIDOS" GROUP BY "PRODUCTO" HAVING SUM("IMPORTE") > 200
+```
+
+## SQL Lesson 10: AS
+```
+- SELECT "PRODUCTO", SUM("IMPORTE") AS "TOTAL" FROM "esquema"."PEDIDOS" GROUP BY "PRODUCTO" HAVING SUM("IMPORTE") > 200
 ```
