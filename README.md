@@ -142,7 +142,7 @@
 - SELECT * FROM "esquema"."PERSONAS" WHERE "NOMBRE" ILIKE '_NT%'
 ```
 
-## -> Data grouping
+## -> Data Grouping
 
 ## SQL Lesson 10: GROUP BY
 ```
@@ -154,7 +154,52 @@
 - SELECT "PRODUCTO", SUM("IMPORTE") FROM "esquema"."PEDIDOS" GROUP BY "PRODUCTO" HAVING SUM("IMPORTE") > 200
 ```
 
+## -> Table Joins
+
 ## SQL Lesson 10: AS
 ```
 - SELECT "PRODUCTO", SUM("IMPORTE") AS "TOTAL" FROM "esquema"."PEDIDOS" GROUP BY "PRODUCTO" HAVING SUM("IMPORTE") > 200
 ```
+
+## SQL Lesson 11: INNER JOIN
+```
+- SELECT "NOMBRE", "DEPARTAMENTO" FROM "esquema"."PERSONAS" 
+    INNER JOIN "esquema"."DEPARTAMENTOS" 
+    ON "esquema"."PERSONAS"."DEP" = "esquema"."DEPARTAMENTOS"."DEP"
+```
+## SQL Lesson 12: FULL JOIN
+```
+- SELECT "NOMBRE", "APELLIDO1", "DEPARTAMENTO" FROM "esquema"."PERSONAS" 
+    FULL JOIN "esquema"."DEPARTAMENTOS" 
+    ON "esquema"."PERSONAS"."DEP" = "esquema"."DEPARTAMENTOS"."DEP"
+```
+
+## SQL Lesson 13: LEFT JOIN
+```
+- SELECT "NOMBRE", "APELLIDO1", "DEPARTAMENTO" FROM "esquema"."PERSONAS" 
+    LEFT JOIN "esquema"."DEPARTAMENTOS" 
+    ON "esquema"."PERSONAS"."DEP" = "esquema"."DEPARTAMENTOS"."DEP"
+```
+
+## SQL Lesson 14: RIGHT JOIN
+```
+- SELECT "NOMBRE", "APELLIDO1", "DEPARTAMENTO" FROM "esquema"."PERSONAS" 
+    RIGHT JOIN "esquema"."DEPARTAMENTOS" 
+    ON "esquema"."PERSONAS"."DEP" = "esquema"."DEPARTAMENTOS"."DEP"
+```
+
+## SQL Lesson 15: UNION JOIN
+```
+- SELECT "PRODUCTO", "IMPORTE" FROM "esquema"."PEDIDOS" 
+    WHERE "IMPORTE" > 200
+- SELECT "PRODUCTO", "IMPORTE" FROM "esquema"."PEDIDOS" 
+    WHERE "PRODUCTO" = 'RATON'
+    
+<!-- UNION -->
+- SELECT "PRODUCTO", "IMPORTE" FROM "esquema"."PEDIDOS" 
+    WHERE "IMPORTE" > 200
+  UNION
+  SELECT "PRODUCTO", "IMPORTE" FROM "esquema"."PEDIDOS" 
+    WHERE "PRODUCTO" = 'RATON'
+```
+
