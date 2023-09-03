@@ -203,3 +203,81 @@
     WHERE "PRODUCTO" = 'RATON'
 ```
 
+## -> Advanced Features
+
+## SQL Lesson 16: DATE and TIME
+https://www.postgresql.org/docs/current/functions-formatting.html
+```
+- SELECT NOW()
+- SELECT TIMEOFDAY()
+- SELECT TIMEOFDAY()
+- SELECT CURRENT_TIME
+- SELECT CURRENT_DATE
+
+- SELECT EXTRACT(DAY FROM "FECHA") AS DIA,
+  EXTRACT(MONTH FROM "FECHA") AS MES,
+  EXTRACT(YEAR FROM "FECHA") AS AÑO,
+  EXTRACT(QUARTER FROM "FECHA") AS QUARTER
+  FROM "esquema"."PEDIDOS"
+
+- SELECT AGE("FECHA") AS "ANTIGUEDAD"
+  FROM "esquema"."PEDIDOS"
+
+- SELECT to_char(current_timestamp, 'HH:MM:SS')
+  FROM "esquema"."PEDIDOS"
+
+- SELECT to_char(current_timestamp, 'DD:MM:YYYY')
+  FROM "esquema"."PEDIDOS"
+
+- SELECT to_char("FECHA", 'DD:MM:YYYY')
+  FROM "esquema"."PEDIDOS"
+```
+
+## SQL Lesson 17: MATH FUNCTIONS
+https://www.postgresql.org/docs/current/functions-math.html
+```
+- SELECT "IMPORTE", "CANTIDAD", "IMPORTE" / "CANTIDAD" AS "Precio unitario" 
+  FROM "esquema"."PEDIDOS" 
+```
+
+## SQL Lesson 18: STRING FUNCTIONS
+https://www.postgresql.org/docs/current/functions-string.html
+```
+- SELECT "NOMBRE", LENGTH("NOMBRE") AS "Longitud"
+  From "esquema"."PERSONAS"
+-SELECT "NOMBRE", LOWER("NOMBRE") AS "Minuscula"
+  From "esquema"."PERSONAS"
+- SELECT "NOMBRE", LEFT("NOMBRE", 3) AS "Nom"
+  From "esquema"."PERSONAS"
+- SELECT "NOMBRE" || ' ' || "APELLIDO1" AS "Nombre completo"
+  From "esquema"."PERSONAS"
+```
+
+## SQL Lesson 19: SUBQUERY WITH NUMERIC VALUE
+```
+- SELECT AVG("IMPORTE") From "esquema"."PEDIDOS"
+
+- SELECT "PRODUCTO", "IMPORTE", "FECHA" FROM "esquema"."PEDIDOS"
+  WHERE "IMPORTE" > (SELECT AVG("IMPORTE") From "esquema"."PEDIDOS")
+```
+
+## SQL Lesson 20: SUBQUERY WITH LIST VALUE
+```
+- SELECT "DEP", "DEPARTAMENTO" FROM "esquema"."DEPARTAMENTOS"
+  WHERE "DEP" IN (SELECT "DEP" From "esquema"."PERSONAS" WHERE "EDAD" > 30)
+```
+
+## SQL Lesson 21: SUBQUERY WITH EXISTS
+```
+- SELECT "NOMBRE", "APELLIDO1","DEP"
+  FROM "esquema"."PERSONAS" AS P
+  WHERE EXISTS
+  (SELECT * FROM "esquema"."DEPARTAMENTOS" AS D
+  WHERE D."DEP" = P."DEP")
+
+- SELECT "NOMBRE", "APELLIDO1","DEP"
+  FROM "esquema"."PERSONAS" AS P
+  WHERE NOT EXISTS
+  (SELECT * FROM "esquema"."DEPARTAMENTOS" AS D
+  WHERE D."DEP" = P."DEP")
+```
