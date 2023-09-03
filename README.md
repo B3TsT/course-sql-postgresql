@@ -281,3 +281,13 @@ https://www.postgresql.org/docs/current/functions-string.html
   (SELECT * FROM "esquema"."DEPARTAMENTOS" AS D
   WHERE D."DEP" = P."DEP")
 ```
+
+## SQL Lesson 22: JOIN A TABLE ONTO ITSELF
+```
+<!--SELECT T1."PRODUCTO", T2."PRODUCTO", T1."IMPORTE" -->
+
+- SELECT *
+  FROM "esquema"."PEDIDOS" AS T1
+  INNER JOIN "esquema"."PEDIDOS" AS T2
+  ON (T1."ID" != T2."ID") AND (T1."IMPORTE" = T2."IMPORTE")
+```
