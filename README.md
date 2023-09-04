@@ -291,3 +291,29 @@ https://www.postgresql.org/docs/current/functions-string.html
   INNER JOIN "esquema"."PEDIDOS" AS T2
   ON (T1."ID" != T2."ID") AND (T1."IMPORTE" = T2."IMPORTE")
 ```
+
+## SQL Lesson 23: CREATE DATABASE
+```
+- CREATE DATABASE NAMEDB
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+```
+
+## SQL Lesson 24: DATATYPE
+https://www.postgresql.org/docs/current/datatype.html
+
+## SQL Lesson 25: TABLE
+```
+- CREATE TABLE usuarios(
+  id_usuario SERIAL PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellido1 VARCHAR(100) NOT NULL,
+  apellido2 VARCHAR(100) NOT NULL,
+  contraseña VARCHAR(100) NOT NULL,
+  mail VARCHAR(100) NOT NULL,
+  fecha_creacion TIMESTAMP NOT NULL,
+)
+```
